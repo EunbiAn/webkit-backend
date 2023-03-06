@@ -1,0 +1,6 @@
+
+spring:
+  thymeleaf:
+    prefix :  src/main/resources/templates/
+    suffix : .html
+    cache : false
