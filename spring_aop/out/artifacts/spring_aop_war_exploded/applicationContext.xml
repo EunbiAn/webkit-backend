@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-5.2.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop-5.2.xsd">
+<!--<context:component-scan base-package="org.example"></context:component-scan>-->
+<!--    <bean id="log" class="org.example.common.LogAdvice"></bean>-->
+<!--    <aop:config>-->
+<!--        <aop:pointcut id="allPointcut" expression="execution(* org.example..*Impl.*(..))"/>-->
+<!--        <aop:aspect ref="log">-->
+<!--            <aop:before method="printLogging" pointcut-ref="allPointcut"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+</beans>

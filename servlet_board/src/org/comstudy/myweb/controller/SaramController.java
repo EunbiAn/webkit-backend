@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 
 public class SaramController implements Controller {
-
     @Override
     public String process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         // String으로 다운 캐스팅
