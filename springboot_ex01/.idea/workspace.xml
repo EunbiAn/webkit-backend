@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af173b4e-5f20-4273-a4cd-e2d058513a98" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/comstudy/saramproj/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/hello2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="af173b4e-5f20-4273-a4cd-e2d058513a98" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,6 +77,7 @@
       <updated>1678085292476</updated>
       <workItem from="1678085295031" duration="1619000" />
       <workItem from="1678087362677" duration="4711000" />
+      <workItem from="1678150993450" duration="167000" />
     </task>
     <servers />
   </component>
