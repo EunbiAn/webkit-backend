@@ -5,7 +5,6 @@ import com.comstudy.todolist.dto.TestRequestBodyDTO;
 import com.comstudy.todolist.service.TodoService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,7 +44,6 @@ public class TestController {
         jsonObj.put("message", message);
         return jsonObj.toString();
     }
-
 
     @GetMapping("/requestBody")
     public String testRequestBody(@RequestBody TestRequestBodyDTO reqDTO) {
