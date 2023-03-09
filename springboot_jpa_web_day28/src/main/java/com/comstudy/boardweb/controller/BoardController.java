@@ -35,6 +35,4 @@ public class BoardController {
         boardService.persist(board);
         return "redirect:/board/list";
     }
-
-
 }
