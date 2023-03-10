@@ -39,39 +39,52 @@ public class TodoController {
             return ResponseEntity.ok().body(response);
         }catch (Exception e){
             // 예외 발생 시 처리
-            String error = e.getMessage();
-            ResponseDTO<TodoDTO> response = ResponseDTO
-                    .<TodoDTO>builder().error(error).build();
-            return ResponseEntity.badRequest().body(response);
+            ResponseDTO<TodoEntity> response = ResponseDTO
+                    .<TodoEntity>builder().error(" >>> createTodo 에러 : "+ e.getMessage()).build();
+            return ResponseEntity.ok().body(response);
         }
     }
 
     // 검색 기능
     @GetMapping
     public ResponseEntity<?> searchTodo(@RequestBody TodoDTO dto){
-        List<TodoEntity> entities = todoService.retrieve(dto.getUserId());
-        List<TodoDTO> dtos = entities.stream().map(TodoDTO::new).collect(Collectors.toList());
-        // TodoDTO 리스트를 ResponseDTO로 초기화
-        ResponseDTO<TodoDTO> response = ResponseDTO.<TodoDTO>builder().data(dtos).build();
-        // ResponseDTO를 리턴
-        return ResponseEntity.ok().body(response);
+        try{
+            List<TodoEntity> entities = todoService.retrieve(dto.getUserId());
+            List<TodoDTO> dtos = entities.stream().map(TodoDTO::new).collect(Collectors.toList());
+            // TodoDTO 리스트를 ResponseDTO로 초기화
+            ResponseDTO<TodoDTO> response = ResponseDTO.<TodoDTO>builder().data(dtos).build();
+            // ResponseDTO를 리턴
+            return ResponseEntity.ok().body(response);
+        } catch (Exception e){
+            ResponseDTO<TodoEntity> response = ResponseDTO
+                    .<TodoEntity>builder().error(" >>> searchTodo 에러 : "+ e.getMessage()).build();
+            return ResponseEntity.ok().body(response);
+        }
+
     }
     // 수정
     @PutMapping
     public ResponseEntity<?> updateTodo(@RequestBody TodoDTO dto){
-        // Entity로 변환
-        TodoEntity entity = dto.toEntity();
-        // userId 초기화
-        entity.setUserId(tempUserId);
-        // 엔티티로 업데이트
-        List<TodoEntity>  entities = todoService.update(entity);
-        // 엔티티 리스트를 Todo 리스트로 변환
-        List<TodoDTO> todos = entities.stream()
-                .map(TodoDTO::new).collect(Collectors.toList());
-        // ResponseDTO로 초기화
-        ResponseDTO<TodoDTO> response = ResponseDTO.<TodoDTO>builder().data(todos).build();
-        // ResponseDTO로 리턴
-        return  ResponseEntity.ok().body(response);
+        try{
+            // Entity로 변환
+            TodoEntity entity = dto.toEntity();
+            // userId 초기화
+            entity.setUserId(tempUserId);
+            // 엔티티로 업데이트
+            List<TodoEntity>  entities = todoService.update(entity);
+            // 엔티티 리스트를 Todo 리스트로 변환
+            List<TodoDTO> todos = entities.stream()
+                    .map(TodoDTO::new).collect(Collectors.toList());
+            // ResponseDTO로 초기화
+            ResponseDTO<TodoDTO> response = ResponseDTO.<TodoDTO>builder().data(todos).build();
+            // ResponseDTO로 리턴
+            return  ResponseEntity.ok().body(response);
+        } catch (Exception e){
+            ResponseDTO<TodoEntity> response = ResponseDTO
+                    .<TodoEntity>builder().error(" >>> updateTodo 에러 : "+ e.getMessage()).build();
+            return ResponseEntity.ok().body(response);
+        }
+
     }
     // 삭제
     @DeleteMapping
@@ -92,9 +105,24 @@ public class TodoController {
             return ResponseEntity.ok().body(response);
         } catch (Exception e) {
             ResponseDTO<TodoEntity> response = ResponseDTO
-                    .<TodoEntity>builder().error("삭제 에러!").build();
+                    .<TodoEntity>builder().error("삭제 에러!"+ e.getMessage()).build();
             return ResponseEntity.ok().body(response);
         }
     }
 
+    @GetMapping("/list")
+    public ResponseEntity<?> selectAll() {
+        try{
+            List<TodoEntity> entities = todoService.findAll();
+            List<TodoDTO> todos = entities.stream().map(TodoDTO::new).collect(Collectors.toList());
+            ResponseDTO<TodoDTO> response = ResponseDTO.<TodoDTO>builder().data(todos).build();
+            return ResponseEntity.ok().body(response);
+
+        } catch (Exception e){
+            ResponseDTO<TodoDTO> response =
+                    ResponseDTO.<TodoDTO>builder().error(" >>> Select All 에러: " + e.getMessage()).build();
+            return ResponseEntity.badRequest().body(response);
+
+        }
+    }
 }
